@@ -179,20 +179,10 @@ class Map extends React.Component {
         <div className="content">
           <Row>
             <Col md="12">
-              <Card>
-                <CardHeader>Google Maps</CardHeader>
+              <Card>                
                 <CardBody>
-                  <div
-                    id="map"
-                    className="map"
-                    style={{ position: "relative", overflow: "hidden" }}
-                  >
-                    <MapWrapper
-                      googleMapURL="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"
-                      loadingElement={<div style={{ height: `100%` }} />}
-                      containerElement={<div style={{ height: `100%` }} />}
-                      mapElement={<div style={{ height: `100%` }} />}
-                    />
+                  <div >
+                  <h1>Aca debes diseñar un formulario para registrar un nuevo dato</h1>
                   </div>
                 </CardBody>
               </Card>
