@@ -1,72 +1,58 @@
-/*!
 
-=========================================================
-* Paper Dashboard React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-/*eslint-disable*/
 import React from "react";
-// react plugin for creating notifications over the dashboard
 import NotificationAlert from "react-notification-alert";
 // reactstrap components
-import { UncontrolledAlert, Alert, Button, Card, CardHeader, CardBody, CardTitle, Row, Col,} from "reactstrap";
+// import { UncontrolledAlert, Alert, Button, Card, CardHeader, CardBody, CardTitle, Row, Col,} from "reactstrap";
+import {
+  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  CardTitle,
+  FormGroup,
+  Form,
+  Input,
+  Row,
+  Col,
+} from "reactstrap";
+
+const dataUser =  [    {
+  "hardSkills": [
+      "java",
+      "visual"
+  ],
+  "softSkills": [
+      "redes"
+  ],
+  "_id": "5fc816da69b2300017af8c0f",
+  "name": "Paola Cubidez",
+  "profession": "psicologa",
+  "birthDate": "1989-09-13T05:00:00.000Z",
+  "joinDate": "2010-12-02T05:00:00.000Z",
+  "__v": 0,
+  "createdAt": "2020-12-02T22:36:10.118Z",
+  "updatedAt": "2020-12-02T22:37:45.991Z"
+}
+]  
+
 
 class Notifications extends React.Component {
-  state = {
-    visible: true,
-  };
-  notificationAlert = React.createRef();
-  notify(place) {
-    var color = Math.floor(Math.random() * 5 + 1);
-    var type;
-    switch (color) {
-      case 1:
-        type = "primary";
-        break;
-      case 2:
-        type = "success";
-        break;
-      case 3:
-        type = "danger";
-        break;
-      case 4:
-        type = "warning";
-        break;
-      case 5:
-        type = "info";
-        break;
-      default:
-        break;
-    }
-    var options = {};
-    options = {
-      place: place,
-      message: (
-        <div>
-          <div>
-            Welcome to <b>Paper Dashboard React</b> - a beautiful freebie for
-            every web developer.
-          </div>
-        </div>
-      ),
-      type: type,
-      icon: "nc-icon nc-bell-55",
-      autoDismiss: 7,
-    };
-    this.notificationAlert.current.notificationAlert(options);
+  
+
+  sentdata = (event) => {
+    event.preventDefault()
+    // console.log(event.target.userName.value);
+    console.log("arrayofData: ", {
+                                  nombre: event.target.userName.value,
+                                  email: event.target.email.value,
+                                  firtsname: event.target.fname.value,
+                                  lastname: event.target.lname.value
+                                }
+                                );
   }
+
+ 
   render() {
     return (
       <>
@@ -74,13 +60,136 @@ class Notifications extends React.Component {
           <NotificationAlert ref={this.notificationAlert} />
           <Row>
             <Col md="12">
+              
               <Card>
                 <CardHeader>
+                <CardTitle tag="h4">Update Developers</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <Row>
-                  <h1>Aca debes un formulario para editar los registros de la data</h1>
-                   </Row>
+
+                <Form onSubmit ={this.sentdata}>
+                    <Row>
+                      <Col className="pr-1" md="5">
+                        <FormGroup>
+                          <label>Company (disabled)</label>
+                          <Input
+                            defaultValue="Creative Code Inc."
+                            disabled
+                            placeholder="Company"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col className="px-1" md="3">
+                        <FormGroup>
+                          <label>Username</label>
+                          <Input
+                            // defaultValue="michael23"
+                          
+                            placeholder="Username"
+                            name="userName"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col className="pl-1" md="4">
+                        <FormGroup>
+                          <label htmlFor="exampleInputEmail1">
+                            Email address
+                          </label>
+                          <Input placeholder="Email" type="email" name="email"/>
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="pr-1" md="6">
+                        <FormGroup>
+                          <label>First Name</label>
+                          <Input
+                            defaultValue="Chet"
+                            placeholder="Company"
+                            name="fname"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col className="pl-1" md="6">
+                        <FormGroup>
+                          <label>Last Name</label>
+                          <Input
+                            defaultValue="Faker"
+                            placeholder="Last Name"
+                            name="lname"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md="12">
+                        <FormGroup>
+                          <label>Address</label>
+                          <Input
+                            defaultValue="Melbourne, Australia"
+                            placeholder="Home Address"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="pr-1" md="4">
+                        <FormGroup>
+                          <label>City</label>
+                          <Input
+                            defaultValue="Melbourne"
+                            placeholder="City"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col className="px-1" md="4">
+                        <FormGroup>
+                          <label>Country</label>
+                          <Input
+                            defaultValue="Australia"
+                            placeholder="Country"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col className="pl-1" md="4">
+                        <FormGroup>
+                          <label>Postal Code</label>
+                          <Input placeholder="ZIP Code" type="number" />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md="12">
+                        <FormGroup>
+                          <label>About Me</label>
+                          <Input
+                            type="textarea"
+                            defaultValue="Oh so, your weak rhyme You doubt I'll bother, reading into it"
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <div className="update ml-auto mr-auto">
+                        <Button
+                          className="btn-round"
+                          color="primary"
+                          type="submit"
+                        >
+                          Send data in array
+                        </Button>
+                      
+                      </div>
+                    </Row>
+                  </Form>
+
                 </CardBody>
               </Card>
             </Col>
