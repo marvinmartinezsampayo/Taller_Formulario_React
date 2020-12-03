@@ -17,7 +17,7 @@ import {
   Col,
 } from "reactstrap";
 
-const dataUser =  [    {
+const dataUser =  [{
   "hardSkills": [
       "java",
       "visual"
@@ -26,15 +26,15 @@ const dataUser =  [    {
       "redes"
   ],
   "_id": "5fc816da69b2300017af8c0f",
-  "name": "Paola Cubidez",
-  "profession": "psicologa",
-  "birthDate": "1989-09-13T05:00:00.000Z",
+  "name": "Fabian Montañez",
+  "profession": "Police",
+  "birthDate": "1997-04-13T05:00:00.000Z",
   "joinDate": "2010-12-02T05:00:00.000Z",
   "__v": 0,
   "createdAt": "2020-12-02T22:36:10.118Z",
   "updatedAt": "2020-12-02T22:37:45.991Z"
 }
-]  
+]
 
 
 class Notifications extends React.Component {
@@ -73,19 +73,18 @@ class Notifications extends React.Component {
                         <FormGroup>
                           <label>Company (disabled)</label>
                           <Input
-                            defaultValue="Creative Code Inc."
+                            defaultValue="Policia Nacional" 
                             disabled
-                            placeholder="Company"
+                            placeholder="Empresa"
                             type="text"
                           />
                         </FormGroup>
                       </Col>
                       <Col className="px-1" md="3">
                         <FormGroup>
-                          <label>Username</label>
+                          <label>Nombre Usuario</label>
                           <Input
-                            // defaultValue="michael23"
-                          
+                            defaultValue= {dataUser[0].name}
                             placeholder="Username"
                             name="userName"
                             type="text"
@@ -94,19 +93,24 @@ class Notifications extends React.Component {
                       </Col>
                       <Col className="pl-1" md="4">
                         <FormGroup>
-                          <label htmlFor="exampleInputEmail1">
-                            Email address
+                          <label htmlFor="profesion">
+                            Profesión
                           </label>
-                          <Input placeholder="Email" type="email" name="email"/>
+                          <Input 
+                          defaultValue = {dataUser[0].profession}
+                          placeholder="Email"
+                          type="email"
+                          name="email"
+                          />
                         </FormGroup>
                       </Col>
                     </Row>
                     <Row>
                       <Col className="pr-1" md="6">
                         <FormGroup>
-                          <label>First Name</label>
+                          <label>Fecha de Nacimiento</label>
                           <Input
-                            defaultValue="Chet"
+                            defaultValue={dataUser[0].birthDate}
                             placeholder="Company"
                             name="fname"
                             type="text"
@@ -115,9 +119,9 @@ class Notifications extends React.Component {
                       </Col>
                       <Col className="pl-1" md="6">
                         <FormGroup>
-                          <label>Last Name</label>
+                          <label>Fecha de incorporación</label>
                           <Input
-                            defaultValue="Faker"
+                            defaultValue={dataUser[0].joinDate}
                             placeholder="Last Name"
                             name="lname"
                             type="text"
